@@ -12,5 +12,7 @@ fi
 file_dir=$(readlink -f ${BASH_SOURCE%/*})
 
 cd $HOME
-echo "ln -s $file_dir/bashrc .bashrc"
+for target in $file_dir/files/*; do
+    echo "ln -s $target $(basename $target)"
+done
 
