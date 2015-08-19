@@ -9,3 +9,6 @@ if [[ $EUID -eq 0 ]]; then
     shift
 fi
 
+cd $HOME
+echo "ln -s ${BASE_SOURCE%/*}/bashrc .bashrc"
+
