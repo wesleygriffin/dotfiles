@@ -9,6 +9,8 @@ if [[ $EUID -eq 0 ]]; then
     shift
 fi
 
+file_dir=$(readlink -f ${BASH_SOURCE%/*})
+
 cd $HOME
-echo "ln -s ${BASE_SOURCE%/*}/bashrc .bashrc"
+echo "ln -s $file_dir/bashrc .bashrc"
 
