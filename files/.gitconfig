@@ -1,0 +1,37 @@
+[user]
+    name = Wesley Griffin
+    email = wesley.griffin@nist.gov
+
+[core]
+    preloadindex = true ; attempt to speed up git on nfs
+    excludesfile = ~/.gitignore_global
+
+[alias]
+    a = add
+    h = help
+    gr = !sh -c 'git grep -IHn --full-name --color=always $@ | \\grep -v "^tags"' --
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    r = remote
+    rso = remote show origin
+    p = pull
+    po = push origin
+    pom = push origin master
+    stat = status
+    st = status -s
+    stu = status -s --untracked=no
+    ci = commit -v
+    cia = commit -av
+    co = checkout
+    prune-all = !git remote | xargs -n 1 git remote prune
+    #record = !git add -p && git ci
+    #amend-record = !git add -p && git ci --amend
+    #stoat = !toilet -f future STOATS
+    #update-master = !git checkout master && git pull -r
+    wdiff = diff --color-words
+    wshow = show --color-words
+
+#[push]
+    #default=simple

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+usage() {
+    echo "usage: $0 -o output <input> [<input> ...]"
+}
+
+OUTFILE=""
+
+while getopts "ho:" opt; do
+    case $opt in
+        o) OUTFILE=$OPTARG;;
+        ?|h) usage; exit 1;;
+    esac
+done
+
+if [ -z $OUTFILE ]; then
+    usage
+    exit 1
+fi
+
+shift $((OPTIND - 1))
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=$OUTFILE $*
+

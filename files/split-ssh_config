@@ -1,0 +1,19 @@
+Host *.nist.gov
+    ForwardX11 yes
+    ForwardX11Trusted yes
+    ForwardAgent yes
+    LogLevel ERROR
+
+Host ls1
+    Hostname linuxserver1.cs.umbc.edu
+    User griffin5
+
+Host linuxserver1.cs.umbc.edu
+    User griffin5
+
+Host ls2
+    Hostname linuxserver2.cs.umbc.edu
+    User griffin5
+
+Host linuxserver2.cs.umbc.edu
+    User griffin5

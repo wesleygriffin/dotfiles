@@ -1,0 +1,9 @@
+scale = 20
+
+define l10 (x) { return l (x) / l (10) }
+define l2 (x) { return l (x) / l (2) }
+
+pi = 4*a(1)
+
+define deg2rad (x) { return x * (pi/180) }
+define rad2deg (x) { return x * (180/pi) }
