@@ -43,5 +43,3 @@ done
 
 #- .bash_profile
 #- .bashrc
-#- .vimrc
-#- .vim/...
