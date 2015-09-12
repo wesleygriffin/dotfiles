@@ -1,6 +1,6 @@
 # other compilers
 
-function __gcc() {
+function __gcc {
     local root=$1
     local vers=$2
     shift 2
@@ -14,5 +14,9 @@ function __gcc() {
     export PATH=${GCCDIR}/bin:$PATH
 }
 
-function gcc48() { __gcc gcc4.8 4.8.3 }
-function gcc5() { __gcc gcc5.2 5.2.0 }
+function gcc48 {
+    __gcc gcc4.8 4.8.3
+}
+function gcc5 {
+    __gcc gcc5.2 5.2.0
+}

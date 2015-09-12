@@ -37,7 +37,9 @@ done
 
 
 [[ -s /usr/local/HEV/.bashhev ]] && source /usr/local/HEV/.bashhev
-function hevroot { cd ${HEVROOT} }
+function hevroot {
+    cd ${HEVROOT}
+}
 
 function hevhere {
     unset DTK_SHAREDMEM_DIR;

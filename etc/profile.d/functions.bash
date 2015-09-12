@@ -1,11 +1,17 @@
 # bash functions
 
-function h2d() { echo "ibase=16; $@" | bc; }
-function d2h() { echo "obase=16; $@" | bc; }
-function mi() { \egrep "(processor|model name)" /proc/cpuinfo }
+function h2d {
+    echo "ibase=16; $@" | bc;
+}
+function d2h {
+    echo "obase=16; $@" | bc;
+}
+function mi {
+    \egrep "(processor|model name)" /proc/cpuinfo
+}
 
 # search towards root for a file
-function upsearch () {
+function upsearch {
   slashes=${PWD//[^\/]/}
   directory="$PWD"
   for (( n=${#slashes}; n>0; --n ))

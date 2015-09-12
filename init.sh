@@ -16,7 +16,7 @@ cd $HOME
 
 for target in $file_dir/files/.*; do
     if [ $(basename $target) == "." -o $(basename $target) == ".." ]; then continue; fi
-    echo "ln -s $target $(basename $target)"
+    ln -s $target $(basename $target)
 done
 
 for target in $file_dir/files/*; do
@@ -25,20 +25,20 @@ for target in $file_dir/files/*; do
         split=$(echo $target | cut -f2 -d-)
         dir=$(echo $(basename $split) | cut -f1 -d_)
         file=$(echo $split | cut -f2 -d_)
-        echo "ln -s $target .$dir/$file"
+        ln -s $target .$dir/$file
     else
-        echo "ln -s $target $(basename $target)"
+        ln -s $target $(basename $target)
     fi
 done
 
-if [ ! -d bin ]; then echo "mkdir bin"; fi
+if [ ! -d bin ]; then mkdir bin; fi
 for target in $file_dir/bin/*; do
-    echo "ln -s $target bin/$(basename $target)"
+    ln -s $target bin/$(basename $target)
 done
 
-if [ ! -d .fonts ]; then echo "mkdir .fonts"; fi
+if [ ! -d .fonts ]; then mkdir .fonts; fi
 for target in $file_dir/fonts/*; do
-    echo "ln -s $target fonts/$(basename $target)"
+    ln -s $target .fonts/$(basename $target)
 done
 
 #- .bash_profile
