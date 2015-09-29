@@ -82,15 +82,15 @@ augroup line_return
                 \ endif
 augroup END
 
-autocmd BufRead,BufNewFile *.py set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd BufRead,BufNewFile *.h set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd BufRead,BufNewFile *.c set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd BufRead,BufNewFile *.hpp set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd BufRead,BufNewFile *.cpp set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd BufRead,BufNewFile *.cc set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+autocmd FileType c set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+autocmd FileType cpp set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+autocmd FileType glsl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+autocmd FileType opencl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+autocmd FileType cu set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
 
-autocmd BufRead,BufNewFile *.html set shiftwidth=2 softtabstop=2 tabstop=2
-autocmd BufRead,BufNewFile *.css set shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType html set shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType css set shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType json set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
 
 filetype on
 filetype indent on
