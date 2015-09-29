@@ -9,7 +9,7 @@ set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
 set cursorline
 set directory=~/.vim/tmp/swap//
 set expandtab
-"set encoding=utf-8
+set encoding=utf-8
 set fileencodings=""
 set foldlevel=9999
 set foldmethod=manual
@@ -167,3 +167,8 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+

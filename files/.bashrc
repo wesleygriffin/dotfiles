@@ -4,7 +4,7 @@ umask 0022
 export VISUAL=vim
 export EDITOR=vim
 
-export PATH=/nist/links/generic/bin:${HOME}/bin:${PATH}
+export PATH=/nist/links/generic/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}
 
 
 # don't put duplicate lines or lines starting with space in the history.
