@@ -25,7 +25,6 @@ set number " line numbering in the left column
 "set path=.,,,**;./
 set shiftround
 set shiftwidth=4
-set showbreak=>\ 
 set showcmd
 set showmode
 set smarttab
@@ -75,29 +74,65 @@ augroup trailing
 augroup END
 
 augroup line_return
-    au!
-    au BufReadPost *
+    autocmd!
+    autocmd BufReadPost *
                 \ if line("'\"") > 0 && line("'\"") <= line("$") |
                 \ execute 'normal! g`"zvzz' |
                 \ endif
 augroup END
 
-autocmd FileType c set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd FileType cpp set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd FileType glsl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd FileType opencl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-autocmd FileType cu set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+augroup ft_c
+    autocmd!
+    autocmd FileType c set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+augroup END
 
-autocmd FileType html set shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType css set shiftwidth=2 softtabstop=2 tabstop=2
-autocmd FileType json set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+augroup ft_cpp
+    autocmd!
+    autocmd FileType cpp set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+augroup END
+
+augroup ft_glsl
+    autocmd!
+    autocmd BufRead,BufNewFile *.vert,*.vert.i,*.frag,*.frag.i,*.geom,*.geom.i,*.glsl,*.glsl.i set filetype=glsl
+    autocmd FileType glsl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+augroup END
+
+augroup ft_opencl
+    autocmd!
+    autocmd BufRead,BufNewFile *.cl,*.opencl set filetype=opencl
+    autocmd FileType opencl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+augroup END
+
+augroup ft_cu
+    autocmd!
+    autocmd BufRead,BufNewFile *.cu,*.cuda set filetype=cu
+    autocmd FileType cu set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+augroup END
+
+augroup ft_html
+    autocmd!
+    autocmd FileType html set shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+augroup ft_css
+    autocmd!
+    autocmd FileType css set shiftwidth=2 softtabstop=2 tabstop=2
+augroup END
+
+augroup ft_json
+    autocmd!
+    autocmd BufRead,BufNewFile *.json set filetype=json
+augroup END
+
+augroup ft_md
+    autocmd!
+    autocmd BufRead,BufNewFile *.mkd,*.markdown set filetype=mkd
+augroup END
 
 filetype on
 filetype indent on
 filetype plugin on
 syntax on
-
-let c_no_curly_error=1
 
 noremap <F1> :checktime<cr>
 inoremap <F1> <esc>:checktime<cr>
