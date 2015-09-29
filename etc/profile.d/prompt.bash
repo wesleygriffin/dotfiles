@@ -91,6 +91,9 @@ function __host_prompt_command() {
     if ! [ -z ${GCCDIR} ]; then
         PS1+=" ${YELLOW}[$(basename ${GCCDIR})]${COLOROFF}"
     fi
+    if ! [ -z ${LLVMDIR} ]; then
+        PS1+=" ${YELLOW}[$(basename ${LLVMDIR})]${COLOROFF}"
+    fi
     if ! [ -z ${INTEL_LICENSE_FILE} ]; then
         PS1+=" ${YELLOW}[icc]${COLOROFF}"
     fi
