@@ -4,8 +4,11 @@ umask 0022
 export VISUAL=vim
 export EDITOR=vim
 
-export PATH=/nist/links/generic/bin:${HOME}/bin:${HOME}/.local/bin:${PATH}
-
+PATH=${HOME}/bin:${HOME}/.local/bin:${PATH}
+if [[ $HOSTNAME =~ *.nist.gov ]]; then
+    PATH=/nist/links/generic/bin:${PATH}
+fi
+export PATH
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
@@ -29,20 +32,15 @@ shopt -s globstar
 eval `dircolors`
 export LS_COLORS
 
-[[ -s ${HOME}/.autojump/etc/profile.d/autojump.bash ]] && source ${HOME}/.autojump/etc/profile.d/autojump.bash
+if [[ -s ${HOME}/.autojump/etc/profile.d/autojump.bash ]]; then
+    source ${HOME}/.autojump/etc/profile.d/autojump.bash
+fi
+
+if [[ -s /usr/local/HEV/.bashhev ]]; then
+    source /usr/local/HEV/.bashhev
+fi
 
 for include in ${HOME}/.dotfiles/etc/profile.d/*.bash; do
     source $include
 done
 
-
-[[ -s /usr/local/HEV/.bashhev ]] && source /usr/local/HEV/.bashhev
-function hevroot {
-    cd ${HEVROOT}
-}
-
-function hevhere {
-    unset DTK_SHAREDMEM_DIR;
-    export HEVROOT=$PWD
-    source $HEVROOT/profile $1 iris
-}

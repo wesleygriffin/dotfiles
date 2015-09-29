@@ -35,3 +35,18 @@ function pollupdate {
         ts="${nts}"; sleep 0.5s
     done
 }
+
+if [[ $HOSTNAME =~ *.nist.gov ]]; then
+
+    function hevroot {
+        cd ${HEVROOT}
+    }
+
+    function hevhere {
+        unset DTK_SHAREDMEM_DIR;
+        export HEVROOT=$PWD
+        source $HEVROOT/profile $1 iris
+    }
+
+fi
+

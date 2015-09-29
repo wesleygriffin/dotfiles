@@ -14,7 +14,7 @@ set fileencodings=""
 set foldlevel=9999
 set foldmethod=manual
 set laststatus=2
-set lazyredraw
+"set lazyredraw
 set list
 set listchars=tab:>-
 set nocompatible
@@ -60,8 +60,8 @@ if has("gui_running")
 
     set antialias
     set guioptions-=T
-    set lines=53
-    set columns=100
+    set lines=75
+    set columns=115
     winpos 1000 0
 endif
 
@@ -171,4 +171,9 @@ endif
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
+
+if filereadable("/opt/llvm/share/clang/clang-format.py")
+    map <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
+    imap <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
+endif
 
