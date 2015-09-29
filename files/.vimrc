@@ -172,7 +172,7 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
-if filereadable("/opt/llvm/share/clang/clang-format.py")
+if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py"))
     map <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
     imap <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
 endif

@@ -5,9 +5,17 @@ export VISUAL=vim
 export EDITOR=vim
 
 PATH=${HOME}/bin:${HOME}/.local/bin:${PATH}
-if [[ $HOSTNAME =~ *.nist.gov ]]; then
-    PATH=/nist/links/generic/bin:${PATH}
+if [[ $HOSTNAME =~ *.nist.gov ]]; then PATH=/nist/links/generic/bin:${PATH}; fi
+
+# look for llvm
+if [[ -d /opt/llvm ]]; then
+    export LLVM_DIR=/opt/llvm
+    PATH=$LLVM_DIR/bin:${PATH}
+elif [[ -d $HOME/local/llvm ]]; then
+    export LLVM_DIR=$HOME/local/llvm
+    PATH=$LLVM_DIR/bin:${PATH}
 fi
+
 export PATH
 
 # don't put duplicate lines or lines starting with space in the history.
