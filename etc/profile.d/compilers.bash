@@ -1,7 +1,12 @@
 # other compilers
 
 function cmake3 {
-    export PATH=/opt/cmake/bin:$PATH
+    if [ -d /opt/cmake ]; then export PATH=/opt/cmake/bin:$PATH
+    elif [ -d ~/local/cmake ]; then export PATH=~/local/cmake/bin:$PATH
+    elif [ -d ~/local/cmake3 ]; then export PATH=~/local/cmake3/bin:$PATH
+    elif [ -d ~/local/cmake3.3 ]; then export PATH=~/local/cmake3.3/bin:$PATH
+    else echo "cmake3: could not locate cmake directory"
+    fi
 }
 
 function __gcc {
@@ -9,12 +14,15 @@ function __gcc {
     local vers=$2
     shift 2
 
-    export GCCDIR=${HOME}/local/${root}
-    export GCCLIBDIR=${GCCDIR}/lib/gcc/x86_64-unknown-linux-gnu
+    if [ -d /opt/gcc ]; then export GCCDIR=/opt/gcc
+    elif [ -d ~/local/gcc ]; then export GCCDIR=~/local/gcc
+    elif [ -d ~/local/${root} ]; then export GCCDIR=~/local/${root}
+    else echo "__gcc: could not locate gcc directory"
+    fi
 
+    export GCCLIBDIR=${GCCDIR}/lib/gcc/x86_64-unknown-linux-gnu
     export LD_LIBRARY_PATH=${GCCLIBDIR}/lib64:${GCCLIBDIR}/${vers}:${GCCDIR}/lib64:${GCCDIR}/lib:${LD_LIBRARY_PATH}
     export LIBRARY_PATH=${GCCLIBDIR}/lib64:${GCCLIBDIR}/${vers}:${GCCDIR}/lib64:${GCCDIR}/lib:
-
     export PATH=${GCCDIR}/bin:$PATH
 }
 
@@ -26,9 +34,13 @@ function gcc5 {
 }
 
 function gcc6 {
-    export GCCDIR=/opt/gcc
-    export GCCLIBDIR=${GCCDIR}/libexec/gcc/x86_64-pc-linux-gnu/6.0.0
+    if [ -d /opt/gcc ]; then export GCCDIR=/opt/gcc
+    elif [ -d /opt/gcc6 ]; then export GCCDIR=/opt/gcc6
+    elif [ -d ~/local/gcc6 ]; then export GCCDIR=~/local/gcc6
+    else "gcc6: could not locate gcc directory"
+    fi
 
+    export GCCLIBDIR=${GCCDIR}/libexec/gcc/x86_64-pc-linux-gnu/6.0.0
     export LD_LIBRARY_PATH=${GCCLIBDIR}:${GCCDIR}/lib64:${LD_LIBRARY_PATH}
     export LIBRARY_PATH=${GCCLIBDIR}:${GCCDIR}/lib64
 
@@ -36,10 +48,14 @@ function gcc6 {
 }
 
 function clang38 {
-    export LLVMDIR=/opt/llvm
+    if [ -d /opt/llvm ]; then export LLVMDIR=/opt/llvm
+    elif [ -d ~/local/llvm ]; then export LLVMDIR=~/local/llvm
+    else echo "clang38: could not locate llvm directory"
+    fi
 
+    export LLVMDIR=/opt/llvm
     export LD_LIBRARY_PATH=${LLVMDIR}/lib:${LD_LIBRARY_PATH}
     export LIBRARY_PATH=${LLVMDIR}/lib
-
     export PATH=${LLVMDIR}/bin:$PATH
 }
+

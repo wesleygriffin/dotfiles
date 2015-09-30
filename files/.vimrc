@@ -62,7 +62,7 @@ if has("gui_running")
     set guioptions-=T
     set lines=75
     set columns=115
-    winpos 1000 0
+    winpos 1920 0
 endif
 
 :autocmd!
@@ -172,7 +172,7 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
-if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
+if (filereadable(expand("$LLVMDIR/share/clang/clang-format.py")))
     map <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
     imap <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
 endif
