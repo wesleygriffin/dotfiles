@@ -126,7 +126,7 @@ augroup END
 
 augroup ft_md
     autocmd!
-    autocmd BufRead,BufNewFile *.mkd,*.markdown set filetype=mkd
+    autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=mkd
 augroup END
 
 filetype on
