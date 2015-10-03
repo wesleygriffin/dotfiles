@@ -36,7 +36,7 @@ function pollupdate {
     done
 }
 
-if [[ $HOSTNAME =~ *.nist.gov ]]; then
+if [[ ${HOSTNAME} =~ .*nist.gov ]]; then
 
     function hevroot {
         cd ${HEVROOT}
