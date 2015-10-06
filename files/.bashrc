@@ -33,6 +33,9 @@ shopt -s globstar
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# add aws completion
+complete -C aws_completer aws
+
 eval `dircolors`
 export LS_COLORS
 
