@@ -11,12 +11,16 @@ alias fgr='fgrep --color=auto'
 alias egr='egrep --color=auto'
 alias rgr='grep -r'
 
+alias pg='pgrep -a'
+alias pk='pkill'
+
 alias g='git'
 alias gh='git help'
 alias h='history'
 alias d='display'
-alias ko='kde-open'
-alias go='gnome-open'
+alias o='xdg-open'
+alias ko='xdg-open'
+alias go='xdg-open'
 alias links='elinks'
 alias sa='ssh-add < /dev/null'
 
