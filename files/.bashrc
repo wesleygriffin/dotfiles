@@ -9,6 +9,10 @@ if [[ -d /opt/llvm ]]; then export LLVM_DIR=/opt/llvm
 elif [[ -d $HOME/local/llvm ]]; then export LLVM_DIR=$HOME/local/llvm
 fi
 
+if [[ -d /opt/texlive/2015 ]]; then
+    PATH=/opt/texlive/2015/bin/x86_64-linux:${PATH};
+fi
+
 PATH=${HOME}/bin:${HOME}/.local/bin:${PATH}
 if [ ! -z $LLVM_DIR ]; then PATH=$LLVM_DIR/bin:${PATH}; fi
 if [[ $HOSTNAME =~ *.nist.gov ]]; then PATH=/nist/links/generic/bin:${PATH}; fi
