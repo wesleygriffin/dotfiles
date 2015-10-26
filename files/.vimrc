@@ -1,12 +1,15 @@
+set t_Co=16 " force 16 colors in terminals
+
 set autoindent
 set autowrite
 set background=light
 set backspace=indent,eol,start
 set backup
 set backupdir=~/.vim/tmp/backup//
-set colorcolumn=+1
 set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+set colorcolumn=+1
 set cursorline
+hi CursorLine term=none cterm=none ctermbg=none guibg=Grey90
 set directory=~/.vim/tmp/swap//
 set expandtab
 set encoding=utf-8
