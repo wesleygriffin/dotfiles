@@ -96,19 +96,19 @@ augroup END
 
 augroup ft_glsl
     autocmd!
-    autocmd BufRead,BufNewFile *.vert,*.vert.i,*.frag,*.frag.i,*.geom,*.geom.i,*.glsl,*.glsl.i set filetype=glsl
+    autocmd BufRead,BufNewFile *.{vert,vert.i,frag,frag.i,geom,geom.i,glsl,glsl.i} set filetype=glsl
     autocmd FileType glsl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
 augroup END
 
 augroup ft_opencl
     autocmd!
-    autocmd BufRead,BufNewFile *.cl,*.opencl set filetype=opencl
+    autocmd BufRead,BufNewFile *.{cl,opencl} set filetype=opencl
     autocmd FileType opencl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
 augroup END
 
 augroup ft_cu
     autocmd!
-    autocmd BufRead,BufNewFile *.cu,*.cuda set filetype=cu
+    autocmd BufRead,BufNewFile *.{cu,cuda} set filetype=cu
     autocmd FileType cu set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
 augroup END
 
@@ -129,7 +129,7 @@ augroup END
 
 augroup ft_md
     autocmd!
-    autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=mkd
+    autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 augroup END
 
 filetype on
