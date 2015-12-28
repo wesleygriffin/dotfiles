@@ -12,6 +12,9 @@ fi
 if [[ -d /opt/texlive/2015 ]]; then
     PATH=/opt/texlive/2015/bin/x86_64-linux:${PATH};
 fi
+if [[ -d ~/nobackup/texlive/2015 ]]; then
+    PATH=~/nobackup/texlive/2015/bin/x86_64-linux:${PATH};
+fi
 
 PATH=${HOME}/bin:${HOME}/.local/bin:${PATH}
 if [ ! -z $LLVM_DIR ]; then PATH=$LLVM_DIR/bin:${PATH}; fi
