@@ -13,6 +13,7 @@ alias rgr='grep -r'
 
 alias pg='pgrep -a'
 alias pk='pkill'
+alias pxargs='xargs -n 1 -P`getconf _NPROCESSORS_ONLN`'
 
 alias g='git'
 alias gh='git help'
