@@ -124,5 +124,5 @@ function __prompt_command() {
     esac
 }
 
-PROMPT_COMMAND=__prompt_command
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} __prompt_command"
 export PROMPT_DIRTRIM=4
