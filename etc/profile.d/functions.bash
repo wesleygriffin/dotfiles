@@ -12,11 +12,11 @@ function mi {
 
 # search towards root for a file
 function upsearch {
-  slashes=${PWD//[^\/]/}
-  directory="$PWD"
-  for (( n=${#slashes}; n>0; --n ))
-  do
-    test -e "$directory/$1" && echo "$directory/$1" && return 
+  DIR=${2:-$PWD}
+  slashes=${DIR//[^\/]/}
+  directory="$DIR"
+  for (( n=${#slashes}; n>0; --n )); do
+    test -e "$directory/$1" && echo "$directory/$1" && return
     directory="$directory/.."
   done
 }
@@ -42,10 +42,30 @@ if [[ ${HOSTNAME} =~ .*nist.gov ]]; then
         cd ${HEVROOT}
     }
 
+    function hevdemos {
+        cd ${HEVROOT}/demos
+    }
+
     function hevhere {
-        unset DTK_SHAREDMEM_DIR;
-        export HEVROOT=$PWD
-        source $HEVROOT/profile $1 iris
+        PROFILE=profile
+
+        if [ ! -f $PROFILE ]; then
+            PROFILE=$(upsearch profile)
+            while [ ! -z "$PROFILE" ]; do
+                grep -q "set up HEV environment" $PROFILE
+                if [ $? == 0 ]; then break; fi
+                DN=$(dirname $PROFILE)/..
+                PROFILE=$(upsearch profile $DN)
+            done
+        fi
+
+        if [ -f $PROFILE ]; then
+            unset DTK_SHAREDMEM_DIR
+            export HEVROOT=$(readlink -f $(dirname $PROFILE))
+            source $HEVROOT/profile $1 iris
+        else
+            echo "No HEV profile found"
+        fi
     }
 
 fi

@@ -65,7 +65,7 @@ if has("gui_running")
     set guioptions-=T
     set lines=75
     set columns=115
-    winpos 1920 0
+    "winpos 1087 0
 endif
 
 :autocmd!
@@ -87,11 +87,13 @@ augroup END
 augroup ft_c
     autocmd!
     autocmd FileType c set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+    autocmd BufRead,BufNewFile *.{c} source <sfile>:h/.vim/syntax/vulkan1.0.vim
 augroup END
 
 augroup ft_cpp
     autocmd!
     autocmd FileType cpp set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+    autocmd BufRead,BufNewFile *.{cpp,cc} source <sfile>:h/.vim/syntax/vulkan1.0.vim
 augroup END
 
 augroup ft_glsl
@@ -175,8 +177,8 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 
-if (filereadable(expand("$LLVMDIR/share/clang/clang-format.py")))
-    map <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
-    imap <C-K> :pyf /opt/llvm/share/clang/clang-format.py<CR>
+if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
+    map <C-K> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
+    imap <C-K> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
