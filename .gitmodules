@@ -4,3 +4,6 @@
 [submodule "autojump"]
 	path = autojump
 	url = https://github.com/joelthelion/autojump.git
+[submodule "clang_complete"]
+	path = clang_complete
+	url = https://github.com/Rip-Rip/clang_complete
