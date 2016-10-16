@@ -15,6 +15,9 @@ fi
 if [[ -d ~/nobackup/texlive/2015 ]]; then
     PATH=~/nobackup/texlive/2015/bin/x86_64-linux:${PATH};
 fi
+if [[ -d /opt/android-studio ]]; then
+    PATH=/opt/android-studio/bin:${PATH};
+fi
 
 PATH=${HOME}/bin:${HOME}/.local/bin:/opt/local/bin:${PATH}
 if [ ! -z $LLVM_DIR ]; then PATH=$LLVM_DIR/bin:${PATH}; fi
