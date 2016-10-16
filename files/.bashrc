@@ -9,12 +9,6 @@ if [[ -d /opt/llvm ]]; then export LLVM_DIR=/opt/llvm
 elif [[ -d $HOME/local/llvm ]]; then export LLVM_DIR=$HOME/local/llvm
 fi
 
-if [[ -d /opt/texlive/2015 ]]; then
-    PATH=/opt/texlive/2015/bin/x86_64-linux:${PATH};
-fi
-if [[ -d ~/nobackup/texlive/2015 ]]; then
-    PATH=~/nobackup/texlive/2015/bin/x86_64-linux:${PATH};
-fi
 if [[ -d /opt/android-studio ]]; then
     PATH=/opt/android-studio/bin:${PATH};
 fi
