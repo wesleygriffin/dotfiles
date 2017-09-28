@@ -191,6 +191,8 @@ python del powerline_setup
 
 if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
     map <C-A-l> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
+    "map <C-K> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
+    "imap <C-K> <c-o>:pyf $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
 let g:clang_library_path=expand("$LLVM_DIR/lib")
