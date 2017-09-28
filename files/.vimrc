@@ -27,16 +27,16 @@ set nojoinspaces
 set number " line numbering in the left column
 "set path=.,,,**;./
 set shiftround
-set shiftwidth=4
+set shiftwidth=2
 set showcmd
 set showmode
 set smarttab
-set softtabstop=4
+set softtabstop=2
 "set spell spelllang=en_us
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P " standard status line with ruler
 set synmaxcol=400
 set tags=./tags;
-set tabstop=4
+set tabstop=2
 set textwidth=78
 set title titlestring=%t%(\ %M%)%(\ (%{hostname()}:\ %{expand(\"%:p:~:h\")})%)%(\ %a%)
 set ttyfast
@@ -159,9 +159,21 @@ nnoremap \\b :C break <C-R>=expand('%:p') . ':' . line('.')<CR>
 noremap ,v :e ~/.vimrc<CR>
 noremap ,s :source ~/.vimrc<CR>
 
+let g:alternateNoDefaultAlternate=1
+let g:alternateRelativeFiles=1
 nnoremap ,a :A<CR>
 
 nnoremap <F6> :setlocal spell spelllang=en_us<CR>
+
+command -nargs=0 -bar Update if &modified
+    \| if empty(bufname('%'))
+    \|  browse confirm write
+    \| else
+    \|  confirm write
+    \| endif
+    \|endif
+
+inoremap <c-s> <c-o>:Update<CR>
 
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
@@ -178,8 +190,7 @@ python powerline_setup()
 python del powerline_setup
 
 if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
-    map <C-K> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
-    imap <C-K> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
+    map <C-A-l> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
 let g:clang_library_path=expand("$LLVM_DIR/lib")
