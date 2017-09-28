@@ -196,4 +196,11 @@ if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
 endif
 
 let g:clang_library_path=expand("$LLVM_DIR/lib")
+let g:clang_complete_auto=1
+let g:clang_complete_copen=1
+let g:clang_periodic_quickfix=1
+let g:clang_snippets=1
+let g:clang_complete_optional_args_in_snippets=1
+let g:clang_user_options='-std=c++14'
+"let g:clang_close_preview=1
 
