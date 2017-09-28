@@ -5,7 +5,7 @@ import sys
 from getopt import getopt
 
 def usage():
-    print "usage:", os.path.basename(sys.argv[0]), "r g b"
+    print("usage:", os.path.basename(sys.argv[0]), "r g b")
 
 opts, args = getopt(sys.argv[1:], "h")
 for opt in opts:
@@ -20,5 +20,5 @@ if not args or len(args) > 3:
 r = float(args[0])
 g = float(args[1])
 b = float(args[2])
-print "(%d, %d, %d) = (%g %g %g)" % (r, g, b, r/255.0, g/255.0, b/255.0)
+print("(%d, %d, %d) = (%g %g %g)" % (r, g, b, r/255.0, g/255.0, b/255.0))
 

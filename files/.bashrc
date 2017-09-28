@@ -1,4 +1,8 @@
 # ~/.bashrc: executed by bash(1) for interactive non-login shells.
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
 umask 0022
 
 export VISUAL=vim
