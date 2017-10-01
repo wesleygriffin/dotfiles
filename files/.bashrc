@@ -53,6 +53,8 @@ fi
 
 if [[ -s /usr/local/HEV/.bashhev ]]; then
     source /usr/local/HEV/.bashhev
+elif [[ -s ${HOME}/hev/.bashhev ]]; then
+    source ${HOME}/hev/.bashhev
 fi
 
 for include in ${HOME}/.dotfiles/etc/profile.d/*.bash; do

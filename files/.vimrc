@@ -54,6 +54,9 @@ if has("gui_running")
     if has("gui_gtk2")
         set guifont=Hack\ 9
     endif
+    if has("gui_gtk3")
+        set guifont=Hack\ 9
+    endif
     if has("gui_win32")
         set guifont=Hack:h10
     endif
@@ -63,7 +66,7 @@ if has("gui_running")
 
     set antialias
     set guioptions-=T
-    set lines=75
+    set lines=63
     set columns=115
     "winpos 1087 0
 endif
