@@ -205,5 +205,4 @@ let g:clang_snippets=1
 let g:clang_complete_optional_args_in_snippets=1
 let g:clang_close_preview=1
 let g:clang_user_options='-std=c++1z'
-"let g:clang_close_preview=1
 
