@@ -7,3 +7,6 @@
 [submodule "clang_complete"]
 	path = clang_complete
 	url = https://github.com/Rip-Rip/clang_complete
+[submodule "youcompleteme"]
+	path = youcompleteme
+	url = https://github.com/Valloric/YouCompleteMe

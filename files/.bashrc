@@ -14,7 +14,15 @@ elif [[ -d $HOME/local/llvm ]]; then export LLVM_DIR=$HOME/local/llvm
 fi
 
 if [[ -d /opt/android-studio ]]; then
-    PATH=/opt/android-studio/bin:${PATH};
+  PATH=/opt/android-studio/bin:${PATH}
+fi
+
+if [[ -d $HOME/local/VSCode-linux-x64 ]]; then
+  PATH=$HOME/local/VSCode-linux-x64:${PATH}
+fi
+
+if [[ -d $HOME/local/dart-sdk ]]; then
+  PATH=$HOME/local/dart-sdk/bin:$HOME/.pub-cache/bin:${PATH}
 fi
 
 PATH=${HOME}/bin:${HOME}/.local/bin:/opt/local/bin:${PATH}
