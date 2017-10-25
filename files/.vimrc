@@ -68,6 +68,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'Vundle/Vundle.vim'
+Plugin 'jlanzarotta/bufexplorer'
 call vundle#end()
 
 filetype plugin indent on
@@ -88,7 +89,7 @@ if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
     imap <C-A-l> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
-nnoremap <silent> ,, :be<CR>
+nnoremap <silent> ,, :BufExplorer<CR>
 nnoremap <silent> <C-S-Tab> :bn<CR>
 nnoremap <silent> <C-Tab> :bn<CR>
 nnoremap <ESC><ESC> :nohlsearch<CR>
