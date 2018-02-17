@@ -6,7 +6,7 @@ set background=light
 set backspace=indent,eol,start
 set backup
 set backupdir=~/.vim/tmp/backup//
-set cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
+set cinoptions=>0.5s,:0,=0.5s,l1,b0,g0,h0.5s,i0.5s,+0.5s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
 set colorcolumn=+1
 set cursorline
 hi CursorLine term=none cterm=none ctermbg=none guibg=Grey90
@@ -54,6 +54,9 @@ if has("gui_running")
     if has("gui_gtk2")
         set guifont=Hack\ 9
     endif
+    if has("gui_gtk3")
+        set guifont=Hack\ 9
+    endif
     if has("gui_win32")
         set guifont=Hack:h10
     endif
@@ -63,105 +66,40 @@ if has("gui_running")
 
     set antialias
     set guioptions-=T
-    set lines=75
+    set lines=67
     set columns=115
     "winpos 1087 0
 endif
 
-:autocmd!
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+call vundle#begin('$HOME/.vim/bundle')
 
-augroup trailing
-    autocmd!
-    autocmd InsertEnter * :set listchars-=trail:.
-    autocmd InsertLeave * :set listchars+=trail:.
-augroup END
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'jlanzarotta/bufexplorer'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'joshdick/onedark.vim'
+Plugin 'derekwyatt/vim-fswitch'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
+Plugin 'vim-scripts/UltiSnips'
 
-augroup line_return
-    autocmd!
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \ execute 'normal! g`"zvzz' |
-                \ endif
-augroup END
+call vundle#end()
 
-augroup ft_c
-    autocmd!
-    autocmd FileType c set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-    autocmd BufRead,BufNewFile *.{c} source <sfile>:h/.vim/syntax/vulkan1.0.vim
-augroup END
-
-augroup ft_cpp
-    autocmd!
-    autocmd FileType cpp set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-    autocmd BufRead,BufNewFile *.{cpp,cc} source <sfile>:h/.vim/syntax/vulkan1.0.vim
-augroup END
-
-augroup ft_glsl
-    autocmd!
-    autocmd BufRead,BufNewFile *.{vert,vert.i,frag,frag.i,geom,geom.i,glsl,glsl.i} set filetype=glsl
-    autocmd FileType glsl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-augroup END
-
-augroup ft_opencl
-    autocmd!
-    autocmd BufRead,BufNewFile *.{cl,opencl} set filetype=opencl
-    autocmd FileType opencl set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-augroup END
-
-augroup ft_cu
-    autocmd!
-    autocmd BufRead,BufNewFile *.{cu,cuda} set filetype=cu
-    autocmd FileType cu set cindent cinoptions=>1s,:0,=1s,l1,b0,g0,h1s,i1s,+1s,c3,C0,/0,(0,u0,U0,w0,W0,m0,M0
-augroup END
-
-augroup ft_html
-    autocmd!
-    autocmd FileType html set shiftwidth=2 softtabstop=2 tabstop=2
-augroup END
-
-augroup ft_css
-    autocmd!
-    autocmd FileType css set shiftwidth=2 softtabstop=2 tabstop=2
-augroup END
-
-augroup ft_json
-    autocmd!
-    autocmd BufRead,BufNewFile *.json set filetype=json
-augroup END
-
-augroup ft_md
-    autocmd!
-    autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
-augroup END
-
-filetype on
-filetype indent on
-filetype plugin on
+filetype plugin indent on
 syntax on
-
-noremap <F1> :checktime<cr>
-inoremap <F1> <esc>:checktime<cr>
+colorscheme onedark
 
 nnoremap <silent> ,, :BufExplorer<CR>
 nnoremap <silent> <C-S-Tab> :bn<CR>
 nnoremap <silent> <C-Tab> :bn<CR>
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
-
-nnoremap \\t :vert stag<CR>
-nnoremap \\g :vimgrep */<CR>
-
-nnoremap \\f :C file <C-R>=findfile(expand('%:t:r'), '**')<CR>
-nnoremap \\b :C break <C-R>=expand('%:p') . ':' . line('.')<CR>
-
-noremap ,v :e ~/.vimrc<CR>
-noremap ,s :source ~/.vimrc<CR>
-
-nnoremap ,a :A<CR>
-
 nnoremap <F6> :setlocal spell spelllang=en_us<CR>
+
+nnoremap <silent> ,a :FSHere<CR>
+au! BufEnter *.h   let b:fswitchdst = 'cc,cpp'
+au! BufEnter *.c   let b:fswitchdst = 'h'
+au! BufEnter *.cc  let b:fswitchdst = 'h'
+au! BufEnter *.cpp let b:fswitchdst = 'h'
 
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
@@ -173,21 +111,11 @@ if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-
+let g:clang_format_path=expand("$LLVM_DIR/bin/clang-format")
 if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
-    map <C-K> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
-    imap <C-K> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
+    map <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
+    imap <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
-let g:clang_library_path=expand("$LLVM_DIR/lib")
-let g:clang_complete_auto=1
-let g:clang_complete_copen=1
-let g:clang_periodic_quickfix=1
-let g:clang_snippets=1
-let g:clang_complete_optional_args_in_snippets=1
-let g:clang_user_options='-std=c++14'
-"let g:clang_close_preview=1
+let g:UltiSnipsExpandTrigger = "<c-g>"
 

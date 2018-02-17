@@ -13,7 +13,7 @@ if [[ -d /opt/android-studio ]]; then
     PATH=/opt/android-studio/bin:${PATH};
 fi
 
-PATH=${HOME}/bin:${HOME}/.local/bin:/opt/local/bin:${PATH}
+PATH=${HOME}/bin:${HOME}/.local/bin:/opt/local/bin:/opt/cmake/bin:${PATH}
 if [ ! -z $LLVM_DIR ]; then PATH=$LLVM_DIR/bin:${PATH}; fi
 if [[ $HOSTNAME =~ *.nist.gov ]]; then PATH=/nist/links/generic/bin:${PATH}; fi
 export PATH
@@ -41,7 +41,8 @@ shopt -s globstar
 complete -C aws_completer aws
 
 eval `dircolors`
-export LS_COLORS
+#LS_COLORS=$LS_COLORS:'di=01;37:'
+#export LS_COLORS
 
 if [[ -s ${HOME}/.autojump/etc/profile.d/autojump.bash ]]; then
     source ${HOME}/.autojump/etc/profile.d/autojump.bash
