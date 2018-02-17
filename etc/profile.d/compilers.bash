@@ -1,5 +1,11 @@
 # other compilers
 
+function nodedev {
+    if [ -d ~/local/nodedev ]; then export PATH=~/local/nodedev/bin:$PATH
+    else echo "nodedev: could not locate nodedev directory"
+    fi
+}
+
 function cmake3 {
     if [ -d /opt/cmake ]; then export PATH=/opt/cmake/bin:$PATH
     elif [ -d ~/local/cmake ]; then export PATH=~/local/cmake/bin:$PATH

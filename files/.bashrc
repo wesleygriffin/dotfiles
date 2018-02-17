@@ -1,4 +1,8 @@
 # ~/.bashrc: executed by bash(1) for interactive non-login shells.
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
 umask 0022
 
 export VISUAL=vim
@@ -50,6 +54,8 @@ fi
 
 if [[ -s /usr/local/HEV/.bashhev ]]; then
     source /usr/local/HEV/.bashhev
+elif [[ -s ${HOME}/hev/.bashhev ]]; then
+    source ${HOME}/hev/.bashhev
 fi
 
 for include in ${HOME}/.dotfiles/etc/profile.d/*.bash; do

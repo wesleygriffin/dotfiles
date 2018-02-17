@@ -20,6 +20,7 @@
     p = pull
     po = push origin
     pom = push origin master
+    pod = push origin develop
     stat = status
     st = status -s
     stu = status -s --untracked=no

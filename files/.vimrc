@@ -27,16 +27,16 @@ set nojoinspaces
 set number " line numbering in the left column
 "set path=.,,,**;./
 set shiftround
-set shiftwidth=4
+set shiftwidth=2
 set showcmd
 set showmode
 set smarttab
-set softtabstop=4
+set softtabstop=2
 "set spell spelllang=en_us
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P " standard status line with ruler
 set synmaxcol=400
 set tags=./tags;
-set tabstop=4
+set tabstop=2
 set textwidth=78
 set title titlestring=%t%(\ %M%)%(\ (%{hostname()}:\ %{expand(\"%:p:~:h\")})%)%(\ %a%)
 set ttyfast

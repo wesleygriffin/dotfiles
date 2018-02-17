@@ -79,9 +79,6 @@ function __host_prompt_command() {
 
     if ! [ -z ${HEVROOT} ]; then
         PS1+=" ${YELLOW}[$(basename ${HEVROOT})"
-        if [ -d ${HEVROOT}/.git ]; then
-            PS1+=" git"
-        fi
         if ! [ -z ${HEV_PROFILE_DEBUG} ]; then
             PS1+=" DEBUG"
         fi
@@ -99,6 +96,9 @@ function __host_prompt_command() {
     fi
 
     #__git_prompt_command
+    # short git prompt: just get the branch
+    local BRANCH=$(git branch 2>/dev/null | \grep "^\*" | cut -f2- -d\ )
+    PS1+=" [${BRANCH}]"
 }
 
 function __prompt_command() {
