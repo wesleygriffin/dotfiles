@@ -66,8 +66,8 @@ if has("gui_running")
 
     set antialias
     set guioptions-=T
-    set lines=67
-    set columns=115
+    set lines=75
+    set columns=150
     "winpos 1087 0
 endif
 
@@ -80,6 +80,12 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'joshdick/onedark.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'majutsushi/tagbar'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/UltiSnips'
 
 call vundle#end()
@@ -117,5 +123,22 @@ if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
     imap <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
+let NERDTreeWinSize = 40
+au VimEnter * execute 'NERDTree' getcwd()
+au VimEnter * wincmd p
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 let g:UltiSnipsExpandTrigger = "<c-g>"
 
+function! CMakeBuild()
+  let s:cmd = "cmake --build build"
+  silent cgetexpr system(s:cmd)
+  copen
+endfunction
+nnoremap <F7> :call CMakeBuild()<CR>
+
+function! CMakeConfigure()
+  let s:cmd = "cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+  silent cgetexpr system(s:cmd)
+  copen
+endfunction
