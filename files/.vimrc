@@ -87,6 +87,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/UltiSnips'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
