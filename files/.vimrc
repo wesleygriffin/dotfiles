@@ -143,3 +143,11 @@ function! CMakeConfigure()
   silent cgetexpr system(s:cmd)
   copen
 endfunction
+
+function! CargoBuild()
+  let s:cmd = "cargo build"
+  silent cgetexpr system(s:cmd)
+  copen
+endfunction
+nnoremap <F7> :call CargoBuild()<CR>
+
