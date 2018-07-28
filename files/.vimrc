@@ -71,6 +71,8 @@ if has("gui_running")
     "winpos 1087 0
 endif
 
+filetype off
+
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin('$HOME/.vim/bundle')
 
