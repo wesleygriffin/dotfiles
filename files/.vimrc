@@ -81,12 +81,13 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
 Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/UltiSnips'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
