@@ -52,10 +52,10 @@ if has("gui_running")
     hi LineNr guifg=#CCCCCC guibg=#FFFFFF
 
     if has("gui_gtk2")
-        set guifont=Hack\ 9
+        set guifont=Hack\ 10
     endif
     if has("gui_gtk3")
-        set guifont=Hack\ 9
+        set guifont=Hack\ 10
     endif
     if has("gui_win32")
         set guifont=Hack:h10
@@ -66,8 +66,8 @@ if has("gui_running")
 
     set antialias
     set guioptions-=T
-    set lines=75
-    set columns=150
+    set lines=72
+    set columns=115
     "winpos 1087 0
 endif
 
@@ -78,17 +78,13 @@ call vundle#begin('$HOME/.vim/bundle')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jlanzarotta/bufexplorer'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'joshdick/onedark.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
-Plugin 'scrooloose/nerdtree'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'vim-scripts/UltiSnips'
 Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
@@ -126,13 +122,6 @@ if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
     imap <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
-let NERDTreeWinSize = 40
-au VimEnter * execute 'NERDTree' getcwd()
-au VimEnter * wincmd p
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:UltiSnipsExpandTrigger = "<c-g>"
-
 function! CMakeBuild()
   let s:cmd = "cmake --build build"
   silent cgetexpr system(s:cmd)
@@ -151,5 +140,4 @@ function! CargoBuild()
   silent cgetexpr system(s:cmd)
   copen
 endfunction
-nnoremap <F7> :call CargoBuild()<CR>
 
