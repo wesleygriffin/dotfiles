@@ -106,6 +106,8 @@ au! BufEnter *.c   let b:fswitchdst = 'h'
 au! BufEnter *.cc  let b:fswitchdst = 'h'
 au! BufEnter *.cpp let b:fswitchdst = 'h'
 
+let g:ycm_confirm_extra_conf = 0
+
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
 endif
