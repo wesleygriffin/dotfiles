@@ -40,49 +40,66 @@ set visualbell
 set wildchar=<Tab> wildmenu wildmode=full
 
 if has("gui_running")
-  hi Normal guifg=#353535 guibg=#FFFFFF
-  hi Search guibg=#AA9900
-  hi ErrorMsg guibg=#AA0000
-  hi LineNr guifg=#CCCCCC guibg=#FFFFFF
+    hi Normal guifg=#353535 guibg=#FFFFFF
+    hi Search guibg=#AA9900
+    hi ErrorMsg guibg=#AA0000
+    hi LineNr guifg=#CCCCCC guibg=#FFFFFF
 
-  if has("gui_gtk2")
-      set guifont=Hack\ 9
-  endif
-  if has("gui_gtk3")
-      set guifont=Hack\ 9
-  endif
-  if has("gui_win32")
-      set guifont=Hack:h10
-  endif
-  if has("gui_mac") || has("gui_macvim")
-      set guifont=Hack:h10
-  endif
+    if has("gui_gtk2")
+        set guifont=Hack\ 10
+    endif
+    if has("gui_gtk3")
+        set guifont=Hack\ 10
+    endif
+    if has("gui_win32")
+        set guifont=Hack:h10
+    endif
+    if has("gui_mac") || has("gui_macvim")
+        set guifont=Hack:h10
+    endif
 
-  set antialias
-  set guioptions-=T
+    set antialias
+    set guioptions-=T
+    set lines=72
+    set columns=130
+    "winpos 1087 0
 endif
 
-:autocmd!
-
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'Vundle/Vundle.vim'
+
+set rtp+=$HOME/.vim/bundle/Vundle.vim
+call vundle#begin('$HOME/.vim/bundle')
+
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'joshdick/onedark.vim'
+Plugin 'derekwyatt/vim-fswitch'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+
 call vundle#end()
 
 filetype plugin indent on
 syntax on
+colorscheme onedark
 
-if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
-endif
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
-endif
+nnoremap <silent> ,, :BufExplorer<CR>
+nnoremap <silent> <C-S-Tab> :bn<CR>
+nnoremap <silent> <C-Tab> :bn<CR>
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
+nnoremap <F6> :setlocal spell spelllang=en_us<CR>
+
+nnoremap <silent> ,a :FSHere<CR>
+au! BufEnter *.h   let b:fswitchdst = 'cc,cpp'
+au! BufEnter *.c   let b:fswitchdst = 'h'
+au! BufEnter *.cc  let b:fswitchdst = 'h'
+au! BufEnter *.cpp let b:fswitchdst = 'h'
+
+let g:ycm_confirm_extra_conf = 0
 
 if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
     map <C-A-l> :pyf $LLVM_DIR/share/clang/clang-format.py<CR>
@@ -94,7 +111,22 @@ nnoremap <silent> <C-S-Tab> :bn<CR>
 nnoremap <silent> <C-Tab> :bn<CR>
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+let g:clang_format_path=expand("$LLVM_DIR/bin/clang-format")
+if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
+    map <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
+    imap <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
+endif
+
+function! CMakeBuild()
+  let s:cmd = "cmake --build build"
+  silent cgetexpr system(s:cmd)
+  copen
+endfunction
+nnoremap <F7> :call CMakeBuild()<CR>
+
+function! CMakeConfigure()
+  let s:cmd = "cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RelWithDebInfo"
+  silent cgetexpr system(s:cmd)
+  copen
+endfunction
 

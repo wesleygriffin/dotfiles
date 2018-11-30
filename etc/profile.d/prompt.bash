@@ -66,13 +66,13 @@ function __git_prompt_command() {
 
 function __host_prompt_command() {
     if [[ ${SSH_TTY} == $(tty) ]]; then
-        PS1+="${RED}(ssh)${COLOROFF} "
+        PS1+="${BRED}(ssh)${COLOROFF} "
     fi
 
     if [[ ${HOSTNAME} =~ dradis.* ]]; then
         PS1+="${REDBG}${BWHITE}"
     else
-        PS1+="${BLUE}"
+        PS1+="${BWHITE}"
     fi
 
     PS1+="\h${COLOROFF}:\w"

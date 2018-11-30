@@ -6,6 +6,10 @@ alias lsn='\ls -h --color=auto -ACF'
 alias ll='\ls -ht --color=auto -ACFls'
 alias lln='\ls -h --color=auto -ACFls'
 
+alias tmux='tmux -2'
+alias tm='tmux -2'
+alias tma='tmux -2 attach-session -t'
+
 alias gr='grep --color=auto'
 alias fgr='fgrep --color=auto'
 alias egr='egrep --color=auto'

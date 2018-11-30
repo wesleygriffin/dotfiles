@@ -52,3 +52,5 @@ for target in $file_dir/fonts/*; do
     if [[ ! -z $chown_user ]]; then chown $chown_user $target; fi
 done
 
+mkdir -p .vim/bundle
+cd .vim/bundle && git clone https://github.com/VundleVim/Vundle.vim
