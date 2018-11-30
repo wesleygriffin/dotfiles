@@ -6,6 +6,9 @@
     preloadindex = true ; attempt to speed up git on nfs
     excludesfile = ~/.gitignore_global
 
+[diff]
+    renameLimit = 30267
+
 [alias]
     a = add
     b = branch
@@ -18,9 +21,13 @@
     r = remote
     rso = remote show origin
     p = pull
+    pr = pull --recurse-submodules
     po = push origin
     pom = push origin master
     pod = push origin develop
+    por = push --recurse-submodules=on-demand origin
+    pomr = push --recurse-submodules=on-demand origin
+    podr = push --recurse-submodules=on-demand origin
     stat = status
     st = status -s
     stu = status -s --untracked=no

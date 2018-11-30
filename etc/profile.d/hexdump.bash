@@ -1,5 +1,5 @@
 # customized hexdump output
-export HD_ADD='"%08_ax  "'
+export HD_ADD='"%08_ax : "'
 export HD_FIN='"  |" 16/1 "%_p" "|\n"'
 
 export  HD_8='4/1 "%02x " "  " 4/1 "%02x " "  " 4/1 "%02x " "  " 4/1 "%02x "'

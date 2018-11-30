@@ -8,13 +8,7 @@ umask 0022
 export VISUAL=vim
 export EDITOR=vim
 
-# look for llvm
-if [[ -d /opt/llvm ]]; then export LLVM_DIR=/opt/llvm
-elif [[ -d $HOME/local/llvm ]]; then export LLVM_DIR=$HOME/local/llvm
-elif [ ! -z $LLVM_DIR ]; then PATH=$LLVM_DIR/bin:${PATH};
-fi
-
-PATH=${HOME}/bin:${HOME}/.local/bin:/opt/local/bin:${PATH}
+PATH=${HOME}/bin:${HOME}/local/vim/bin:${HOME}/.local/bin:/opt/local/bin:${PATH}
 
 if [[ $HOSTNAME =~ *.nist.gov ]]; then PATH=/nist/links/generic/bin:${PATH}; fi
 export PATH
