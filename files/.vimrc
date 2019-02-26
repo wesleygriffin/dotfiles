@@ -5,11 +5,11 @@ set autowrite
 set background=light
 set backspace=indent,eol,start
 set backup
-set backupdir=$HOME/.vim/tmp/backup//
+set backupdir=$HOME/.vim/tmp/backup/
 set colorcolumn=+2
 set cursorline
 hi CursorLine term=none cterm=none ctermbg=none guibg=Grey90
-set directory=$HOME/.vim/tmp/swap//
+set directory=$HOME/.vim/tmp/swap/
 set expandtab
 set encoding=utf-8
 set fileencodings=""
@@ -72,7 +72,7 @@ call vundle#begin('$HOME/.vim/bundle')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'jlanzarotta/bufexplorer'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'joshdick/onedark.vim'
 Plugin 'derekwyatt/vim-fswitch'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
@@ -136,11 +136,11 @@ let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
 
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-  autocmd VimEnter * wincmd p
-augroup END
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"  autocmd VimEnter * wincmd p
+"augroup END
 
 function! FormatJson()
   execute '%!python -m json.tool' | w
