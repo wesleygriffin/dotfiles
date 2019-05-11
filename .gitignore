@@ -1,5 +1,5 @@
 **.sw?
 **.pyc
 files/.vim/tmp
-files/.vim/bundle
+files/.vim/plug
 files/.vim/.netrwhist

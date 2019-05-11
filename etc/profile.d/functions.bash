@@ -36,37 +36,3 @@ function pollupdate {
     done
 }
 
-if [[ ${HOSTNAME} =~ .*nist.gov ]]; then
-
-    function hevroot {
-        cd ${HEVROOT}
-    }
-
-    function hevdemos {
-        cd ${HEVROOT}/demos
-    }
-
-    function hevhere {
-        PROFILE=profile
-
-        if [ ! -f $PROFILE ]; then
-            PROFILE=$(upsearch profile)
-            while [ ! -z "$PROFILE" ]; do
-                grep -q "set up HEV environment" $PROFILE
-                if [ $? == 0 ]; then break; fi
-                DN=$(dirname $PROFILE)/..
-                PROFILE=$(upsearch profile $DN)
-            done
-        fi
-
-        if [ -f $PROFILE ]; then
-            unset DTK_SHAREDMEM_DIR
-            export HEVROOT=$(readlink -f $(dirname $PROFILE))
-            source $HEVROOT/profile $1 iris
-        else
-            echo "No HEV profile found"
-        fi
-    }
-
-fi
-

@@ -34,7 +34,7 @@ set tabstop=2
 set textwidth=78
 set title titlestring=%t%(\ %M%)%(\ (%{hostname()}:\ %{expand(\"%:p:~:h\")})%)%(\ %a%)
 set ttyfast
-set undodir=$HOME/.vim/tmp/undo//
+set undodir=$HOME/.vim/tmp/undo/
 set viminfo=""
 set visualbell
 set wildchar=<Tab> wildmenu wildmode=full
@@ -67,50 +67,38 @@ endif
 
 filetype off
 
-set rtp+=$HOME/.vim/bundle/Vundle.vim
-call vundle#begin('$HOME/.vim/bundle')
+call plug#begin('$HOME/.vim/plug')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'jlanzarotta/bufexplorer'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'joshdick/onedark.vim'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim'}
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'joshdick/onedark.vim'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'vim-airline/vim-airline'
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 syntax on
 colorscheme onedark
 
-au! BufEnter *.h let b:fswitchdst = 'cc,cpp,c'
-au! BufEnter *.c let b:fswitchdst = 'h'
-au! BufEnter *.cc let b:fswitchdst = 'h'
-au! BufEnter *.cpp let b:fswitchdst = 'h,hpp'
+let mapleader = ","
 
-nnoremap <silent> ,, :BufExplorer<CR>
+nnoremap <silent> <Leader>a :FSHere<CR>
+nnoremap <silent> <Leader>, :BufExplorer<CR>
 nnoremap <silent> <C-S-Tab> :bn<CR>
 nnoremap <silent> <C-Tab> :bn<CR>
 nnoremap <ESC><ESC> :nohlsearch<CR>
-
 nnoremap <F6> :setlocal spell spelllang=en_us<CR>
 
-nnoremap <silent> ,a :FSHere<CR>
-
-au! BufEnter *.h   let b:fswitchdst = 'cc,cpp'
-au! BufEnter *.c   let b:fswitchdst = 'h'
-au! BufEnter *.cc  let b:fswitchdst = 'h'
-au! BufEnter *.cpp let b:fswitchdst = 'h'
-au! BufNewFile,BufRead *.md set filetype=markdown
-
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_complete_in_comments = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-"let g:ycm_global_ycm_extra_conf="$HOME/.vim/ycm_extra_conf.py"
-map <C-]> :YcmCompleter GoTo<CR>
+augroup FSwitch
+  au!
+  au! BufEnter *.h let b:fswitchdst = 'cc,cpp,c'
+  au! BufEnter *.c let b:fswitchdst = 'h'
+  au! BufEnter *.cc let b:fswitchdst = 'h'
+  au! BufEnter *.cpp let b:fswitchdst = 'h,hpp'
+augroup End
 
 let g:clang_format_path=expand("$LLVM_DIR/bin/clang-format")
 if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
@@ -125,22 +113,10 @@ function! CMakeBuild()
 endfunction
 nnoremap <F7> :call CMakeBuild()<CR>
 
-function! CMakeConfigure()
-  let s:cmd = "cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RelWithDebInfo"
-  silent cgetexpr system(s:cmd)
-  copen
-endfunction
-
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 25
-
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"  autocmd VimEnter * wincmd p
-"augroup END
 
 function! FormatJson()
   execute '%!python -m json.tool' | w

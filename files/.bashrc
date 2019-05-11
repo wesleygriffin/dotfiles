@@ -8,8 +8,7 @@ umask 0022
 export VISUAL=vim
 export EDITOR=vim
 
-PATH=${HOME}/bin:${HOME}/local/vim/bin:${HOME}/.local/bin:/opt/local/bin:${PATH}
-
+PATH=/opt/local/bin:${PATH}
 if [[ $HOSTNAME =~ *.nist.gov ]]; then PATH=/nist/links/generic/bin:${PATH}; fi
 export PATH
 
@@ -32,16 +31,7 @@ shopt -s globstar
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# add aws completion
-complete -C aws_completer aws
-
 eval `dircolors`
-#LS_COLORS=$LS_COLORS:'di=01;37:'
-#export LS_COLORS
-
-if [[ -s ${HOME}/.autojump/etc/profile.d/autojump.bash ]]; then
-    source ${HOME}/.autojump/etc/profile.d/autojump.bash
-fi
 
 if [[ -s /usr/local/HEV/.bashhev ]]; then
     source /usr/local/HEV/.bashhev
