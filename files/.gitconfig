@@ -42,5 +42,5 @@
     wdiff = diff --color-words
     wshow = show --color-words
 
-#[push]
-    #default=simple
+[push]
+    default=simple
