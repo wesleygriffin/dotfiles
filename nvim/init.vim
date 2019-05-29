@@ -43,8 +43,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 call plug#end()
 colorscheme onedark
 
-let mapleader = '\'
+let mapleader = ','
 
+nnoremap <silent> <Leader>a :FSHere<cr>
 nnoremap <Leader>b :buffers<cr>
 nnoremap <Leader>1 :1b<cr>
 nnoremap <Leader>2 :2b<cr>
@@ -56,7 +57,6 @@ nnoremap <Leader>7 :7b<cr>
 nnoremap <Leader>8 :8b<cr>
 nnoremap <Leader>9 :9b<cr>
 
-nnoremap <silent> ,a :FSHere<cr>
 nnoremap <ESC><ESC> :nohlsearch<cr>
 nnoremap <F12> :LspDefinition<cr>
 
@@ -116,3 +116,5 @@ highlight LspCxxHlSymProperty ctermfg=251
 highlight LspCxxHlSymVariable ctermfg=203
 highlight LspCxxHlSymField ctermfg=213
 highlight LspCxxHlSym ctermfg=251
+
+let g:airline_section_error = ''
