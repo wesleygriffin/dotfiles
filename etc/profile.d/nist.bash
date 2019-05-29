@@ -1,7 +1,8 @@
-if [[ ${HOSTNAME} =~ *.nist.gov ]]; then
-    nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1
+if [[ ${HOSTNAME} =~ .nist.gov ]]; then
+    #nvidia-settings -a [gpu:0]/GPUPowerMizerMode=1
 
     export LLVM_DIR=${HOME}/local/llvm
+    export PATH=${HOME}/bin:${PATH}
 
     alias sudo='echo NO!'
     alias testing='echo NO!'

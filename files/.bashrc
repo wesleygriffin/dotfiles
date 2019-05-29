@@ -8,8 +8,10 @@ umask 0022
 export VISUAL=vim
 export EDITOR=vim
 
-PATH=/opt/local/bin:${PATH}
-if [[ $HOSTNAME =~ *.nist.gov ]]; then PATH=/nist/links/generic/bin:${PATH}; fi
+PATH=/opt/local/bin:${HOME}/bin:${PATH}
+if [[ $HOSTNAME =~ .nist.gov ]]; then
+  PATH=${HOME}/.local/bin:${HOME}/local/cquery/bin:/nist/links/generic/bin:${PATH};
+fi
 export PATH
 
 # don't put duplicate lines or lines starting with space in the history.
