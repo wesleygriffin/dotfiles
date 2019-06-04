@@ -48,6 +48,8 @@ colorscheme onedark
 let mapleader = ','
 
 nnoremap <silent> <Leader>a :FSHere<cr>
+nnoremap <Leader>q :copen<cr>
+nnoremap <Leader>t :25split term://bash<cr>
 nnoremap <Leader>f :Files<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>l :Lines<cr>
@@ -64,6 +66,8 @@ nnoremap <Leader>9 :9b<cr>
 nnoremap <ESC><ESC> :nohlsearch<cr>
 nnoremap <F12> :LspDefinition<cr>
 nnoremap <silent> <F7> :make!<cr> :cwindow<cr>
+
+tnoremap <ESC><ESC> <C-\><C-n>
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
