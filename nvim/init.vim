@@ -29,6 +29,8 @@ endif " win32
 
 Plug 'joshdick/onedark.vim'
 Plug 'derekwyatt/vim-fswitch'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'tpope/vim-fugitive'
@@ -46,7 +48,9 @@ colorscheme onedark
 let mapleader = ','
 
 nnoremap <silent> <Leader>a :FSHere<cr>
-nnoremap <Leader>b :buffers<cr>
+nnoremap <Leader>f :Files<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>l :Lines<cr>
 nnoremap <Leader>1 :1b<cr>
 nnoremap <Leader>2 :2b<cr>
 nnoremap <Leader>3 :3b<cr>
@@ -59,6 +63,7 @@ nnoremap <Leader>9 :9b<cr>
 
 nnoremap <ESC><ESC> :nohlsearch<cr>
 nnoremap <F12> :LspDefinition<cr>
+nnoremap <silent> <F7> :make!<cr> :cwindow<cr>
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -76,17 +81,9 @@ augroup End " FSwitch
 
 let g:clang_format_path=expand("$LLVM_DIR/bin/clang-format")
 if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
-  map <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
-  imap <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
+  map <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<cr>
+  imap <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<cr>
 endif " clang-format
-
-function! CMakeBuild()
-  let s:cmd = "cmakd --build build"
-  silent cgetexpr system(s:cmd)
-  copen
-endfunction " CMakeBuild
-
-nnoremap <F7> :call CMakeBuild()<CR>
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
@@ -110,6 +107,8 @@ if executable('cquery')
     \ })
 endif " cquery
 
+set makeprg=ninja\ -C\ build
+
 highlight LspCxxHlSymVariableStatic cterm=bold ctermfg=203
 highlight LspCxxHlSymClassFunctionStatic ctermfg=251
 highlight LspCxxHlSymProperty ctermfg=251
@@ -118,3 +117,7 @@ highlight LspCxxHlSymField ctermfg=213
 highlight LspCxxHlSym ctermfg=251
 
 let g:airline_section_error = ''
+let g:airline_section_warning = ''
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+

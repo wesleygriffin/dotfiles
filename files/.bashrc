@@ -45,3 +45,4 @@ for include in ${HOME}/.dotfiles/etc/profile.d/*.bash; do
     source $include
 done
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
