@@ -32,10 +32,10 @@ function __git_prompt_command() {
     local BRANCH=$(git branch 2>/dev/null | \grep "^\*" | cut -f2- -d\ )
 
     if [[ ${HOSTNAME} =~ dradis.* ]]; then
-        PS1+=" [${BRANCH}]"
+        PS1+=" ${BLUE}[${BRANCH}]${COLOROFF}"
         return
     elif [ ! -z "$(upsearch .nogitstatusprompt)" ]; then
-        PS1+=" [${BRANCH}]"
+        PS1+=" ${BLUE}[${BRANCH}]${COLOROFF}"
         return
     fi
 
@@ -98,7 +98,7 @@ function __host_prompt_command() {
     #__git_prompt_command
     # short git prompt: just get the branch
     local BRANCH=$(git branch 2>/dev/null | \grep "^\*" | cut -f2- -d\ )
-    PS1+=" [${BRANCH}]"
+    PS1+=" ${BLUE}[${BRANCH}]${COLOROFF}"
 }
 
 function __prompt_command() {

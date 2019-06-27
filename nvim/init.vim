@@ -3,6 +3,7 @@ set colorcolumn=+2
 set cursorline
 set expandtab
 set listchars="tab:>-,trail:."
+set noequalalways
 set noincsearch
 set number
 set shiftwidth=2
@@ -49,7 +50,7 @@ let mapleader = ','
 
 nnoremap <silent> <Leader>a :FSHere<cr>
 nnoremap <Leader>q :copen<cr>
-nnoremap <Leader>t :25split term://bash<cr>
+nnoremap <Leader>t :20split term://bash<cr>
 nnoremap <Leader>f :Files<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>l :Lines<cr>
@@ -62,6 +63,10 @@ nnoremap <Leader>6 :6b<cr>
 nnoremap <Leader>7 :7b<cr>
 nnoremap <Leader>8 :8b<cr>
 nnoremap <Leader>9 :9b<cr>
+
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gc :Gcommit<cr>
+nnoremap <Leader>gp :Gpush<cr>
 
 nnoremap <ESC><ESC> :nohlsearch<cr>
 nnoremap <F12> :LspDefinition<cr>
