@@ -106,13 +106,6 @@ if (filereadable(expand("$LLVM_DIR/share/clang/clang-format.py")))
     imap <C-S-l> :py3f $LLVM_DIR/share/clang/clang-format.py<CR>
 endif
 
-function! CMakeBuild()
-  let s:cmd = "cmake --build build"
-  silent cgetexpr system(s:cmd)
-  copen
-endfunction
-nnoremap <F7> :call CMakeBuild()<CR>
-
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 4

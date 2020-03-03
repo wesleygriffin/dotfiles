@@ -36,29 +36,5 @@ for target in $file_dir/files/*; do
     if [[ ! -z $chown_user ]]; then chown $chown_user $target; fi
 done
 
-if [[ ! -d bin ]]; then mkdir bin; fi
-for target in $file_dir/bin/*; do
-    link_name=$(basename $target)
-    ln -sf $target bin/$link_name
-
-    if [[ ! -z $chown_user ]]; then chown $chown_user $target; fi
-done
-
-if [[ ! -d .fonts ]]; then mkdir .fonts; fi
-for target in $file_dir/fonts/*; do
-    link_name=$(basename $target)
-    ln -sf $target .fonts/$link_name
-
-    if [[ ! -z $chown_user ]]; then chown $chown_user $target; fi
-done
-
 mkdir -p .vim/tmp/{backup,swap,undo}
-
-if [[ ! -d .config/nvim ]]; then mkdir -p .config/nvim; fi
-for target in $file_dir/nvim/*; do
-    link_name=$(basename $target)
-    ln -sf $target .config/nvim/$link_name
-
-    if [[ ! -z $chown_user ]]; then chown $chown_user $target; fi
-done
 

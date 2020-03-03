@@ -31,10 +31,7 @@ function __git_prompt_command() {
 
     local BRANCH=$(git branch 2>/dev/null | \grep "^\*" | cut -f2- -d\ )
 
-    if [[ ${HOSTNAME} =~ dradis.* ]]; then
-        PS1+=" ${BLUE}[${BRANCH}]${COLOROFF}"
-        return
-    elif [ ! -z "$(upsearch .nogitstatusprompt)" ]; then
+    if [ ! -z "$(upsearch .nogitstatusprompt)" ]; then
         PS1+=" ${BLUE}[${BRANCH}]${COLOROFF}"
         return
     fi
@@ -69,36 +66,13 @@ function __host_prompt_command() {
         PS1+="${BRED}(ssh)${COLOROFF} "
     fi
 
-    if [[ ${HOSTNAME} =~ dradis.* ]]; then
-        PS1+="${REDBG}${BWHITE}"
-    else
-        PS1+="${BWHITE}"
-    fi
-
+    PS1+="${BWHITE}"
     PS1+="\h${COLOROFF}:\w"
-
-    if ! [ -z ${HEVROOT} ]; then
-        PS1+=" ${YELLOW}[$(basename ${HEVROOT})"
-        if ! [ -z ${HEV_PROFILE_DEBUG} ]; then
-            PS1+=" DEBUG"
-        fi
-        PS1+="]${COLOROFF}"
-    fi
-
-    if ! [ -z ${GCCDIR} ]; then
-        PS1+=" ${YELLOW}[$(basename ${GCCDIR})]${COLOROFF}"
-    fi
-    if ! [ -z ${LLVMDIR} ]; then
-        PS1+=" ${YELLOW}[$(basename ${LLVMDIR})]${COLOROFF}"
-    fi
-    if ! [ -z ${INTEL_LICENSE_FILE} ]; then
-        PS1+=" ${YELLOW}[icc]${COLOROFF}"
-    fi
 
     #__git_prompt_command
     # short git prompt: just get the branch
     local BRANCH=$(git branch 2>/dev/null | \grep "^\*" | cut -f2- -d\ )
-    PS1+=" ${BLUE}[${BRANCH}]${COLOROFF}"
+    PS1+=" ${BBLUE}[${BRANCH}]${COLOROFF}"
 }
 
 function __prompt_command() {

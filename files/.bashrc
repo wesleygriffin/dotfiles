@@ -8,10 +8,7 @@ umask 0022
 export VISUAL=vim
 export EDITOR=vim
 
-PATH=/opt/local/bin:${HOME}/bin:${PATH}
-if [[ $HOSTNAME =~ .nist.gov ]]; then
-  PATH=${HOME}/.local/bin:${HOME}/local/cquery/bin:/nist/links/generic/bin:${PATH};
-fi
+PATH=/opt/local/bin:${HOME}/.local/bin:${PATH}
 export PATH
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -35,14 +32,7 @@ shopt -s globstar
 
 eval `dircolors`
 
-if [[ -s /usr/local/HEV/.bashhev ]]; then
-    source /usr/local/HEV/.bashhev
-elif [[ -s ${HOME}/hev/.bashhev ]]; then
-    source ${HOME}/hev/.bashhev
-fi
-
 for include in ${HOME}/.dotfiles/etc/profile.d/*.bash; do
     source $include
 done
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

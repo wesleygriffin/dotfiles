@@ -1,13 +1,6 @@
 [user]
     name = Wesley Griffin
-    email = wesley.griffin@nist.gov
-
-[core]
-    preloadindex = true ; attempt to speed up git on nfs
-    excludesfile = ~/.gitignore_global
-
-[diff]
-    renameLimit = 30267
+    email = wgriffin@fraktured.net
 
 [alias]
     a = add
@@ -35,12 +28,6 @@
     cia = commit -av
     co = checkout
     prune-all = !git remote | xargs -n 1 git remote prune
-    #record = !git add -p && git ci
-    #amend-record = !git add -p && git ci --amend
-    #stoat = !toilet -f future STOATS
-    #update-master = !git checkout master && git pull -r
     wdiff = diff --color-words
     wshow = show --color-words
 
-[push]
-    default=simple
