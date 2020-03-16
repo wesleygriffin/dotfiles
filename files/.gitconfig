@@ -1,33 +1,20 @@
-[user]
-    name = Wesley Griffin
-    email = wgriffin@fraktured.net
-
 [alias]
     a = add
     b = branch
+    ci = commit -v
+    co = checkout
+    cp = cherry-pick
     h = help
-    gr = !sh -c 'git grep -IHn --full-name --color=always $@ | \\grep -v "^tags"' --
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     r = remote
     rso = remote show origin
     p = pull
-    pr = pull --recurse-submodules
     po = push origin
     pom = push origin master
-    pod = push origin develop
-    por = push --recurse-submodules=on-demand origin
-    pomr = push --recurse-submodules=on-demand origin
-    podr = push --recurse-submodules=on-demand origin
     stat = status
     st = status -s
-    stu = status -s --untracked=no
-    ci = commit -v
-    cia = commit -av
-    co = checkout
-    prune-all = !git remote | xargs -n 1 git remote prune
-    wdiff = diff --color-words
-    wshow = show --color-words
 
+[user]
+    name = Wesley Griffin
+    email = wgriffin@fraktured.net
