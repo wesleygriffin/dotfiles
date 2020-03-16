@@ -1,3 +1,6 @@
+[core]
+    excludesfile = ~/.gitignore_global
+
 [alias]
     a = add
     b = branch
@@ -12,8 +15,19 @@
     p = pull
     po = push origin
     pom = push origin master
+    sm = submodule
+    smco = submodule foreach git checkout
+    smfe = submodule foreach
+    smpull = submodule foreach '[ "$sha1" = `git rev-parse HEAD` ] || git pull --rebase'
+    smup = submodule update --init --recursive
     stat = status
     st = status -s
+
+[diff]
+    submodule = log
+
+[status]
+    submoduleSummary = 1
 
 [user]
     name = Wesley Griffin
