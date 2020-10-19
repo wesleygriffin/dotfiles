@@ -92,7 +92,7 @@ function __prompt_command() {
 
     case "${TERM}" in
     xterm*|rxvt*)
-        PS1="\[\e]0;\h: \w\]${PS1}"
+        PS1="\[\e]0;\h: \w\a\]${PS1}"
         ;;
     screen)
         #PS1="\[\ek\h: \w\]${PS1}"
