@@ -88,16 +88,21 @@ function __prompt_command() {
     __host_prompt_command
 
     PS1+="\$ "
+    PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
     case "${TERM}" in
     xterm*|rxvt*)
-        PS1="\[\e]0;\h: \w\a\]${PS1}"
+        PS1="\[\e]0;\h: \w\]${PS1}"
+        ;;
+    screen)
+        #PS1="\[\ek\h: \w\]${PS1}"
         ;;
     *)
         ;;
     esac
 }
 
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} __prompt_command"
+#PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} __prompt_command"
+PROMPT_COMMAND="__prompt_command"
 export PROMPT_DIRTRIM=4
 
