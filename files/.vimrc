@@ -55,7 +55,7 @@ if has("gui_running")
         set guifont=Hack:h10
     endif
     if has("gui_mac") || has("gui_macvim")
-        set guifont=Hack:h10
+        set guifont=Hack:h12
     endif
 
     set antialias
@@ -70,7 +70,7 @@ filetype off
 call plug#begin('$HOME/.vim/plug')
 
 Plug 'jlanzarotta/bufexplorer'
-Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'derekwyatt/vim-fswitch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'

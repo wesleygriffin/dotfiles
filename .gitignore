@@ -1,5 +1,6 @@
 **.sw?
 **.pyc
+**.DS_Store
 files/.vim/tmp
 files/.vim/plug
 files/.vim/.netrwhist
